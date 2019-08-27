@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,9 +15,36 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="eAr-qZ-bcv">
+                                <rect key="frame" x="0.0" y="680" width="414" height="216"/>
+                            </pickerView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="OLg-Vt-yuX">
+                                <rect key="frame" x="50" y="150" width="314" height="283"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Selecione uma Linguagem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBJ-Hd-s9S">
+                                <rect key="frame" x="60" y="453" width="294" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.6698148544520548" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kBJ-Hd-s9S" firstAttribute="top" secondItem="OLg-Vt-yuX" secondAttribute="bottom" constant="20" id="50c-3K-jA2"/>
+                            <constraint firstItem="eAr-qZ-bcv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dhh-Tl-fda"/>
+                            <constraint firstAttribute="bottom" secondItem="eAr-qZ-bcv" secondAttribute="bottom" id="KeB-T9-9HY"/>
+                            <constraint firstItem="eAr-qZ-bcv" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Kk4-KG-YEC"/>
+                            <constraint firstItem="eAr-qZ-bcv" firstAttribute="top" secondItem="kBJ-Hd-s9S" secondAttribute="bottom" constant="200" id="MSU-Ts-dfO"/>
+                            <constraint firstItem="eAr-qZ-bcv" firstAttribute="top" secondItem="kBJ-Hd-s9S" secondAttribute="bottom" constant="200" id="ONc-kP-j4O"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OLg-Vt-yuX" secondAttribute="trailing" constant="50" id="VNs-K7-GSb"/>
+                            <constraint firstItem="kBJ-Hd-s9S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="gry-qf-5A5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kBJ-Hd-s9S" secondAttribute="trailing" constant="60" id="km3-58-ca4"/>
+                            <constraint firstItem="OLg-Vt-yuX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="kqo-xz-4j6"/>
+                            <constraint firstItem="OLg-Vt-yuX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="106" id="q4w-ly-LhT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -22,4 +53,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="800" height="665"/>
+    </resources>
 </document>

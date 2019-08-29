@@ -21,9 +21,9 @@
 		88261A4E23173004005BA0A1 /* InformationsRepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A4D23173004005BA0A1 /* InformationsRepoTableViewCell.swift */; };
 		88261A4F23173004005BA0A1 /* InformationsRepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A4D23173004005BA0A1 /* InformationsRepoTableViewCell.swift */; };
 		88261A5023173004005BA0A1 /* InformationsRepoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A4D23173004005BA0A1 /* InformationsRepoTableViewCell.swift */; };
-		88261A52231734D7005BA0A1 /* Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A51231734D7005BA0A1 /* Rest.swift */; };
-		88261A53231734D7005BA0A1 /* Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A51231734D7005BA0A1 /* Rest.swift */; };
-		88261A54231734D7005BA0A1 /* Rest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A51231734D7005BA0A1 /* Rest.swift */; };
+		88261A52231734D7005BA0A1 /* GetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A51231734D7005BA0A1 /* GetRepository.swift */; };
+		88261A53231734D7005BA0A1 /* GetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A51231734D7005BA0A1 /* GetRepository.swift */; };
+		88261A54231734D7005BA0A1 /* GetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A51231734D7005BA0A1 /* GetRepository.swift */; };
 		88261A5623174D8E005BA0A1 /* InformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A5523174D8E005BA0A1 /* InformationTableViewController.swift */; };
 		88261A5723174D8E005BA0A1 /* InformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A5523174D8E005BA0A1 /* InformationTableViewController.swift */; };
 		88261A5823174D8E005BA0A1 /* InformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A5523174D8E005BA0A1 /* InformationTableViewController.swift */; };
@@ -63,7 +63,7 @@
 		88261A3223156D0F005BA0A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88261A4923172B17005BA0A1 /* Repositori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositori.swift; sourceTree = "<group>"; };
 		88261A4D23173004005BA0A1 /* InformationsRepoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationsRepoTableViewCell.swift; sourceTree = "<group>"; };
-		88261A51231734D7005BA0A1 /* Rest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rest.swift; sourceTree = "<group>"; };
+		88261A51231734D7005BA0A1 /* GetRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepository.swift; sourceTree = "<group>"; };
 		88261A5523174D8E005BA0A1 /* InformationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -167,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				88261A4923172B17005BA0A1 /* Repositori.swift */,
-				88261A51231734D7005BA0A1 /* Rest.swift */,
+				88261A51231734D7005BA0A1 /* GetRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -306,7 +306,7 @@
 				88261A1623156D06005BA0A1 /* GitHub.xcdatamodeld in Sources */,
 				88261A5623174D8E005BA0A1 /* InformationTableViewController.swift in Sources */,
 				88261A4E23173004005BA0A1 /* InformationsRepoTableViewCell.swift in Sources */,
-				88261A52231734D7005BA0A1 /* Rest.swift in Sources */,
+				88261A52231734D7005BA0A1 /* GetRepository.swift in Sources */,
 				88261A4A23172B17005BA0A1 /* Repositori.swift in Sources */,
 				88261A1023156D06005BA0A1 /* ViewController.swift in Sources */,
 				88261A0E23156D06005BA0A1 /* AppDelegate.swift in Sources */,
@@ -318,7 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88261A4F23173004005BA0A1 /* InformationsRepoTableViewCell.swift in Sources */,
-				88261A53231734D7005BA0A1 /* Rest.swift in Sources */,
+				88261A53231734D7005BA0A1 /* GetRepository.swift in Sources */,
 				88261A5723174D8E005BA0A1 /* InformationTableViewController.swift in Sources */,
 				88261A2623156D0E005BA0A1 /* GitHubTests.swift in Sources */,
 				88261A4B23172B17005BA0A1 /* Repositori.swift in Sources */,
@@ -330,7 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88261A5023173004005BA0A1 /* InformationsRepoTableViewCell.swift in Sources */,
-				88261A54231734D7005BA0A1 /* Rest.swift in Sources */,
+				88261A54231734D7005BA0A1 /* GetRepository.swift in Sources */,
 				88261A5823174D8E005BA0A1 /* InformationTableViewController.swift in Sources */,
 				88261A3123156D0E005BA0A1 /* GitHubUITests.swift in Sources */,
 				88261A4C23172B17005BA0A1 /* Repositori.swift in Sources */,

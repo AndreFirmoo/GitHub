@@ -18,6 +18,8 @@ class InformationViewController: UIViewController, UITableViewDelegate, UITableV
     var page = 1
     var infos = [Itens]()
     override func viewDidLoad() {
+        title = "Linguagem: \(languages)"
+        tableview.tableFooterView = UIView()
         super.viewDidLoad()
         loadDataApi(currentPage: page, Language: languages) { (item) in
             self.information = item

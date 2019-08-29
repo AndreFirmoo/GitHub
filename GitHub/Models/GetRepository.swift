@@ -11,7 +11,6 @@ import Foundation
 func loadDataApi(currentPage: Int,Language: String ,onComplete: @escaping (_ repositories:[Item])-> Void) {
   
     let urlApi = URL(string: "https://api.github.com/search/repositories?q=language:\(Language)&sort=stars&page=\(String(currentPage))")
-    print(urlApi)
     guard let url = urlApi  else { return }
     URLSession.shared.dataTask(with: url) {(data, response, err)in
         guard let data = data else {return}

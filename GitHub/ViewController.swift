@@ -20,10 +20,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         super.viewDidLoad()
         pvLanguage.delegate = self
         pvLanguage.dataSource = self
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func BtnSelectedRow(_ sender: Any) {
-        performSegue(withIdentifier: "Cell", sender: self)
+        //performSegue(withIdentifier: "Cell", sender: self)
         
     }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

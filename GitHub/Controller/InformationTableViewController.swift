@@ -27,13 +27,18 @@ class InformationViewController: UIViewController, UITableViewDelegate, UITableV
                 self.tableview.reloadData()
             }
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let detailsView = segue.destination as! DetailsViewController
+        let passInformations = information[tableview.indexPathForSelectedRow!.row]
+        detailsView.login = passInformations.owner.login
+        detailsView.name = passInformations.name
+        detailsView.informations = passInformations
+    }
+    
+    
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {

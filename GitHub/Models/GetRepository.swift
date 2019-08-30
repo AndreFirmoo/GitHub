@@ -23,3 +23,19 @@ func loadDataApi(currentPage: Int,Language: String ,onComplete: @escaping (_ rep
         }
         }.resume()
 }
+func loadPulls(login: String, name: String, onComplete: @escaping (_ pulls: [Pulls]) -> Void){
+    let urlApi = URL(string: "https://api.github.com/repos/\(login)/\(name)/pulls")
+    print(urlApi)
+    guard let url = urlApi  else { return }
+    URLSession.shared.dataTask(with: url) {(data, response, err)in
+        guard let data = data else {return}
+        do {
+            let pullsRequest = try JSONDecoder().decode([Pulls].self, from: data)
+            print(pullsRequest)
+            
+            onComplete(pullsRequest)
+        } catch  {
+            print(error.localizedDescription)
+        }
+        }.resume()
+}

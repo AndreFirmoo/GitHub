@@ -41,5 +41,7 @@ class InformationsRepoTableViewCell: UITableViewCell {
         ivAvatar.image = UIImage(data: data!)
         ivFork.image = UIImage(named: "fork")
         ivStar.image = UIImage(named: "star")
+        ivAvatar.layer.cornerRadius = ivAvatar.frame.size.width/2
+        ivAvatar.clipsToBounds = true
     }
 }

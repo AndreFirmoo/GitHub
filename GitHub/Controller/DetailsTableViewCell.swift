@@ -31,6 +31,9 @@ class DetailsTableViewCell: UITableViewCell {
         let url = URL(string: pulls.head.repo.owner.avatar_url)
         let data = try? Data(contentsOf: url!)
         ivAvatarUrl.image = UIImage(data: data!)
+        
+        ivAvatarUrl.layer.cornerRadius = ivAvatarUrl.frame.size.width/2
+        ivAvatarUrl.clipsToBounds = true
     }
    
     

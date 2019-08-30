@@ -49,8 +49,8 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUn-po-wkE">
                                 <rect key="frame" x="100" y="535" width="214" height="216"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="DDP-Ur-A24"/>
                                     <constraint firstAttribute="width" constant="214" id="Hrw-Uj-NFG"/>
-                                    <constraint firstAttribute="height" constant="216" id="nmq-OU-ioX"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="4cu-MZ-qk0"/>
@@ -60,6 +60,7 @@
                         <color key="backgroundColor" red="0.7912296660958904" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ohV-Jf-goO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="3Jg-hs-UTJ"/>
+                            <constraint firstItem="OUn-po-wkE" firstAttribute="top" relation="lessThanOrEqual" secondItem="ohV-Jf-goO" secondAttribute="bottom" constant="143" id="BV8-jI-jdi"/>
                             <constraint firstItem="2Ce-U9-QGA" firstAttribute="top" secondItem="OUn-po-wkE" secondAttribute="bottom" constant="8" id="D7B-tI-vi1"/>
                             <constraint firstItem="2yA-GP-juj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="ExF-RP-Xnn"/>
                             <constraint firstItem="2yA-GP-juj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="GQ1-EH-5tK"/>
@@ -67,7 +68,6 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2yA-GP-juj" secondAttribute="trailing" constant="87" id="NfX-Su-zRE"/>
                             <constraint firstItem="ohV-Jf-goO" firstAttribute="top" secondItem="2yA-GP-juj" secondAttribute="bottom" constant="50" id="Npg-wj-Kbd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2Ce-U9-QGA" secondAttribute="bottom" constant="53" id="XkH-GA-zth"/>
-                            <constraint firstItem="OUn-po-wkE" firstAttribute="top" relation="lessThanOrEqual" secondItem="ohV-Jf-goO" secondAttribute="bottom" constant="298" id="YcB-9d-qfi"/>
                             <constraint firstItem="2Ce-U9-QGA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="aXy-0Z-htT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2Ce-U9-QGA" secondAttribute="trailing" constant="100" id="fAA-Pl-8pz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ohV-Jf-goO" secondAttribute="trailing" constant="40" id="iID-Yj-8nh"/>
@@ -130,7 +130,7 @@
                                                         <constraint firstAttribute="width" constant="25" id="t5I-qJ-Vaj"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-PX-PVb">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-PX-PVb">
                                                     <rect key="frame" x="257" y="11" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="0jc-qb-u1V"/>

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0CCAD2AD1A4B7C8278F16666 /* Pods_GitHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C801EEF55882C361CEDCC /* Pods_GitHub.framework */; };
 		2875EDBA25DC5B36002394D3 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB425DC5B36002394D3 /* HomePresenter.swift */; };
-		2875EDBB25DC5B36002394D3 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB525DC5B36002394D3 /* HomeWorker.swift */; };
 		2875EDBC25DC5B36002394D3 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB625DC5B36002394D3 /* HomeRouter.swift */; };
 		2875EDBD25DC5B36002394D3 /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB725DC5B36002394D3 /* HomeModels.swift */; };
 		2875EDBE25DC5B36002394D3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB825DC5B36002394D3 /* HomeViewController.swift */; };
@@ -66,7 +65,6 @@
 /* Begin PBXFileReference section */
 		13FBECB089139A60213A882E /* Pods-GitHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHub.debug.xcconfig"; path = "Target Support Files/Pods-GitHub/Pods-GitHub.debug.xcconfig"; sourceTree = "<group>"; };
 		2875EDB425DC5B36002394D3 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
-		2875EDB525DC5B36002394D3 /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
 		2875EDB625DC5B36002394D3 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		2875EDB725DC5B36002394D3 /* HomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
 		2875EDB825DC5B36002394D3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -140,12 +138,11 @@
 		2875EDB325DC5B14002394D3 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				2875EDB425DC5B36002394D3 /* HomePresenter.swift */,
-				2875EDB525DC5B36002394D3 /* HomeWorker.swift */,
-				2875EDB625DC5B36002394D3 /* HomeRouter.swift */,
-				2875EDB725DC5B36002394D3 /* HomeModels.swift */,
 				2875EDB825DC5B36002394D3 /* HomeViewController.swift */,
 				2875EDB925DC5B36002394D3 /* HomeInteractor.swift */,
+				2875EDB425DC5B36002394D3 /* HomePresenter.swift */,
+				2875EDB625DC5B36002394D3 /* HomeRouter.swift */,
+				2875EDB725DC5B36002394D3 /* HomeModels.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -566,7 +563,6 @@
 				88261A0E23156D06005BA0A1 /* AppDelegate.swift in Sources */,
 				88ED83852319982000885592 /* DetailsViewController.swift in Sources */,
 				2875EDE425DC5CBA002394D3 /* ProfileViewController.swift in Sources */,
-				2875EDBB25DC5B36002394D3 /* HomeWorker.swift in Sources */,
 				2875EDBA25DC5B36002394D3 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

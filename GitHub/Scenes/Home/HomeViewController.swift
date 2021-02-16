@@ -12,78 +12,19 @@
 
 import UIKit
 
-protocol HomeDisplayLogic: class
-{
-  func displaySomething(viewModel: Home.ViewModel)
+protocol HomeDisplayLogic: class{
+  
 }
 
-class HomeViewController: UIViewController, HomeDisplayLogic
-{
-  var interactor: HomeBusinessLogic?
-  var router: (NSObjectProtocol & HomeRoutingLogic)?
+class HomeViewController: UIViewController {
+    @IBOutlet weak var userSeach: UITextField!
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
-  {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder)
-  {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  // MARK: Setup
-  
-  private func setup()
-  {
-    let viewController = self
-    let interactor = HomeInteractor()
-    let presenter = HomePresenter()
-    let router = HomeRouter()
-    viewController.interactor = interactor
-    viewController.router = router as? HomeRoutingLogic & NSObjectProtocol
-    interactor.presenter = presenter
-    presenter.viewController = viewController
-    router.viewController = viewController
-    router.dataStore = interactor
-  }
-  
-  // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
+    override func viewDidLoad()
+    {
     super.viewDidLoad()
-    doSomething()
-  }
+   
+    }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething()
-  {
-    let request = Home.Request(name: "")
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: Home.ViewModel)
-  {
-    //nameTextField.text = viewModel.name
-  }
+    @IBAction func seachUser(_ sender: Any) {
+    }
 }

@@ -12,30 +12,6 @@
 
 import UIKit
 
-protocol HomeBusinessLogic
-{
-  func doSomething(request: Home.Request)
-}
+class HomeInteractor {
 
-protocol HomeDataStore
-{
-  //var name: String { get set }
-}
-
-class HomeInteractor: HomeBusinessLogic, HomeDataStore
-{
-  var presenter: HomePresentationLogic?
-  var worker: HomeWorker?
-  //var name: String = ""
-  
-  // MARK: Do something
-  
-  func doSomething(request: Home.Request)
-  {
-    worker = HomeWorker()
-    worker?.doSomeWork()
-    
-    let response = Home.Response()
-    presenter?.presentSomething(response: response)
-  }
 }

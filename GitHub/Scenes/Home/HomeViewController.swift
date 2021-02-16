@@ -45,7 +45,7 @@ class HomeViewController: UIViewController, HomeDisplayLogic
     let presenter = HomePresenter()
     let router = HomeRouter()
     viewController.interactor = interactor
-    viewController.router = router as! HomeRoutingLogic & NSObjectProtocol
+    viewController.router = router as? HomeRoutingLogic & NSObjectProtocol
     interactor.presenter = presenter
     presenter.viewController = viewController
     router.viewController = viewController

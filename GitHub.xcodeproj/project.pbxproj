@@ -3,11 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0CCAD2AD1A4B7C8278F16666 /* Pods_GitHub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 344C801EEF55882C361CEDCC /* Pods_GitHub.framework */; };
+		2875EDBA25DC5B36002394D3 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB425DC5B36002394D3 /* HomePresenter.swift */; };
+		2875EDBB25DC5B36002394D3 /* HomeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB525DC5B36002394D3 /* HomeWorker.swift */; };
+		2875EDBC25DC5B36002394D3 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB625DC5B36002394D3 /* HomeRouter.swift */; };
+		2875EDBD25DC5B36002394D3 /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB725DC5B36002394D3 /* HomeModels.swift */; };
+		2875EDBE25DC5B36002394D3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB825DC5B36002394D3 /* HomeViewController.swift */; };
+		2875EDBF25DC5B36002394D3 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDB925DC5B36002394D3 /* HomeInteractor.swift */; };
+		2875EDE025DC5CBA002394D3 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDDA25DC5CBA002394D3 /* ProfilePresenter.swift */; };
+		2875EDE125DC5CBA002394D3 /* ProfileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDDB25DC5CBA002394D3 /* ProfileWorker.swift */; };
+		2875EDE225DC5CBA002394D3 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDDC25DC5CBA002394D3 /* ProfileRouter.swift */; };
+		2875EDE325DC5CBA002394D3 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDDD25DC5CBA002394D3 /* ProfileModels.swift */; };
+		2875EDE425DC5CBA002394D3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDDE25DC5CBA002394D3 /* ProfileViewController.swift */; };
+		2875EDE525DC5CBA002394D3 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2875EDDF25DC5CBA002394D3 /* ProfileInteractor.swift */; };
+		2875EDED25DC6381002394D3 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2875EDEC25DC6381002394D3 /* HomeViewController.xib */; };
 		88261A0E23156D06005BA0A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A0D23156D06005BA0A1 /* AppDelegate.swift */; };
 		88261A1023156D06005BA0A1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A0F23156D06005BA0A1 /* ViewController.swift */; };
 		88261A1323156D06005BA0A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88261A1123156D06005BA0A1 /* Main.storyboard */; };
@@ -52,6 +65,19 @@
 
 /* Begin PBXFileReference section */
 		13FBECB089139A60213A882E /* Pods-GitHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHub.debug.xcconfig"; path = "Target Support Files/Pods-GitHub/Pods-GitHub.debug.xcconfig"; sourceTree = "<group>"; };
+		2875EDB425DC5B36002394D3 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		2875EDB525DC5B36002394D3 /* HomeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWorker.swift; sourceTree = "<group>"; };
+		2875EDB625DC5B36002394D3 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		2875EDB725DC5B36002394D3 /* HomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
+		2875EDB825DC5B36002394D3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2875EDB925DC5B36002394D3 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		2875EDDA25DC5CBA002394D3 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		2875EDDB25DC5CBA002394D3 /* ProfileWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWorker.swift; sourceTree = "<group>"; };
+		2875EDDC25DC5CBA002394D3 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		2875EDDD25DC5CBA002394D3 /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
+		2875EDDE25DC5CBA002394D3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2875EDDF25DC5CBA002394D3 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		2875EDEC25DC6381002394D3 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		344C801EEF55882C361CEDCC /* Pods_GitHub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5404D6A13CD47BE50D746F /* Pods_GitHubTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A7C282CA939BF1B715EEE60 /* Pods-GitHubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubTests.debug.xcconfig"; path = "Target Support Files/Pods-GitHubTests/Pods-GitHubTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +137,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2875EDB325DC5B14002394D3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2875EDB425DC5B36002394D3 /* HomePresenter.swift */,
+				2875EDB525DC5B36002394D3 /* HomeWorker.swift */,
+				2875EDB625DC5B36002394D3 /* HomeRouter.swift */,
+				2875EDB725DC5B36002394D3 /* HomeModels.swift */,
+				2875EDB825DC5B36002394D3 /* HomeViewController.swift */,
+				2875EDB925DC5B36002394D3 /* HomeInteractor.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2875EDC625DC5B9C002394D3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2875EDDA25DC5CBA002394D3 /* ProfilePresenter.swift */,
+				2875EDDB25DC5CBA002394D3 /* ProfileWorker.swift */,
+				2875EDDC25DC5CBA002394D3 /* ProfileRouter.swift */,
+				2875EDDD25DC5CBA002394D3 /* ProfileModels.swift */,
+				2875EDDE25DC5CBA002394D3 /* ProfileViewController.swift */,
+				2875EDDF25DC5CBA002394D3 /* ProfileInteractor.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		2875EDD625DC5C5C002394D3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				2875EDC625DC5B9C002394D3 /* Profile */,
+				2875EDB325DC5B14002394D3 /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		2875EDE925DC5E87002394D3 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				2875EDEB25DC6345002394D3 /* Profile */,
+				2875EDEA25DC633E002394D3 /* Home */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		2875EDEA25DC633E002394D3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2875EDEC25DC6381002394D3 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2875EDEB25DC6345002394D3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		5E7C968F5432A23F6A435FD2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +216,6 @@
 				4A7C282CA939BF1B715EEE60 /* Pods-GitHubTests.debug.xcconfig */,
 				83AC04E93EFF4070D794BDA1 /* Pods-GitHubTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -163,6 +247,8 @@
 				88261A4023156D8F005BA0A1 /* Models */,
 				88261A3F23156D7F005BA0A1 /* Controller */,
 				88261A3E23156D4C005BA0A1 /* View */,
+				2875EDE925DC5E87002394D3 /* Flows */,
+				2875EDD625DC5C5C002394D3 /* Scenes */,
 				88261A0D23156D06005BA0A1 /* AppDelegate.swift */,
 				88261A1723156D0E005BA0A1 /* Assets.xcassets */,
 				88261A1C23156D0E005BA0A1 /* Info.plist */,
@@ -332,6 +418,7 @@
 				88261A1B23156D0E005BA0A1 /* LaunchScreen.storyboard in Resources */,
 				88261A1823156D0E005BA0A1 /* Assets.xcassets in Resources */,
 				88261A1323156D06005BA0A1 /* Main.storyboard in Resources */,
+				2875EDED25DC6381002394D3 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,16 +546,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2875EDE225DC5CBA002394D3 /* ProfileRouter.swift in Sources */,
 				88261A1623156D06005BA0A1 /* GitHub.xcdatamodeld in Sources */,
 				88261A5623174D8E005BA0A1 /* InformationTableViewController.swift in Sources */,
+				2875EDE325DC5CBA002394D3 /* ProfileModels.swift in Sources */,
 				88261A4E23173004005BA0A1 /* InformationsRepoTableViewCell.swift in Sources */,
+				2875EDBF25DC5B36002394D3 /* HomeInteractor.swift in Sources */,
 				88ED8381231997CB00885592 /* DetailsTableViewCell.swift in Sources */,
 				88261A52231734D7005BA0A1 /* GetRepository.swift in Sources */,
+				2875EDBE25DC5B36002394D3 /* HomeViewController.swift in Sources */,
+				2875EDE125DC5CBA002394D3 /* ProfileWorker.swift in Sources */,
+				2875EDE525DC5CBA002394D3 /* ProfileInteractor.swift in Sources */,
 				88261A4A23172B17005BA0A1 /* Repositori.swift in Sources */,
+				2875EDBD25DC5B36002394D3 /* HomeModels.swift in Sources */,
+				2875EDBC25DC5B36002394D3 /* HomeRouter.swift in Sources */,
+				2875EDE025DC5CBA002394D3 /* ProfilePresenter.swift in Sources */,
 				88261A1023156D06005BA0A1 /* ViewController.swift in Sources */,
 				88ED837F2319944C00885592 /* Pulls.swift in Sources */,
 				88261A0E23156D06005BA0A1 /* AppDelegate.swift in Sources */,
 				88ED83852319982000885592 /* DetailsViewController.swift in Sources */,
+				2875EDE425DC5CBA002394D3 /* ProfileViewController.swift in Sources */,
+				2875EDBB25DC5B36002394D3 /* HomeWorker.swift in Sources */,
+				2875EDBA25DC5B36002394D3 /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,7 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8N9J95UH3;
+				DEVELOPMENT_TEAM = D73SZWFV4A;
 				INFOPLIST_FILE = GitHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -670,7 +769,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S8N9J95UH3;
+				DEVELOPMENT_TEAM = D73SZWFV4A;
 				INFOPLIST_FILE = GitHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

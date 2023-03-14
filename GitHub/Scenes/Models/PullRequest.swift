@@ -1,5 +1,5 @@
 //
-//  Pulls.swift
+//  PullRequest.swift
 //  GitHub
 //
 //  Created by Andre Jardim Firmo on 30/08/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Pulls: Decodable {
+struct PullRequest: Decodable {
     let title: String
     let body: String
     let head : Head

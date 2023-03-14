@@ -1,5 +1,5 @@
 //
-//  Repositori.swift
+//  Repository.swift
 //  GitHub
 //
 //  Created by Andre Jardim Firmo on 28/08/19.
@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct LanguageItem: Decodable {
-    let items : [Items]
+struct Repository: Decodable {
+    var items : [Items]
 }
     
 struct Items: Decodable {
-    let name : String
-    let owner: Owner
-    let description:String
-    let stargazers_count:Int
-    let forks: Int
-    let language: String
+    var name : String
+    var owner: Owner
+    var description:String
+    var stargazersCount:Int
+    var forks: Int
+    var language: String
 }
 
 struct Language: Decodable {
@@ -28,5 +28,5 @@ struct Language: Decodable {
 
 struct Owner: Decodable {
     let login: String
-    let avatar_url: String
+    let avatarUrl: String
 }

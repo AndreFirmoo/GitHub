@@ -29,7 +29,7 @@ class InformationsRepoTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func prepare(with repo: Item){
+    func prepare(with repo: Items){
         lbLogin.text = repo.owner.login
         lbDescriptions.text = repo.description
         lbLanguage.text = repo.language

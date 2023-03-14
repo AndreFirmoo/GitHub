@@ -13,7 +13,7 @@ class DetailsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     var login = ""
     var name = ""
-    var informations : Item!
+    var informations : Items!
     var pulls = [Pulls]()
     
     override func viewDidLoad() {

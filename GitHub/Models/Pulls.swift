@@ -7,29 +7,17 @@
 //
 
 import Foundation
-class Pulls: Codable {
+
+struct Pulls: Decodable {
     let title: String
     let body: String
     let head : Head
-    
-    init(title: String, body:String, head:Head) {
-        self.title = title
-        self.body = body
-        self.head = head
-    }
 }
 
-class Head: Codable {
+struct Head: Decodable {
     let repo: Repo
-    
-    init(repo: Repo) {
-        self.repo = repo
-    }
 }
-class Repo: Codable {
+
+struct Repo: Decodable {
     let owner : Owner
-    
-    init(owner: Owner) {
-        self.owner = owner
-    }
 }

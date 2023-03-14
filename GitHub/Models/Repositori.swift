@@ -7,41 +7,26 @@
 //
 
 import Foundation
-class Itens: Codable {
-    let items : [Item]
-    init(items: [Item]) {
-        self.items = items
-    }
-   
+
+struct LanguageItem: Decodable {
+    let items : [Items]
 }
-class Item: Codable {
+    
+struct Items: Decodable {
     let name : String
     let owner: Owner
     let description:String
     let stargazers_count:Int
     let forks: Int
     let language: String
-    init(name: String, owner: Owner, description: String,stargazers_count: Int, forks: Int, language: String) {
-        self.name = name
-        self.owner = owner
-        self.description = description
-        self.stargazers_count = stargazers_count
-        self.forks = forks
-        self.language = language
-    }
 }
-class Language: Codable {
+
+struct Language: Decodable {
     let language : String
-    init(lang: String) {
-        self.language = lang
-    }
+    
 }
-class Owner: Codable {
+
+struct Owner: Decodable {
     let login: String
     let avatar_url: String
-    
-    init(login: String, avatar_url: String) {
-        self.avatar_url = avatar_url
-        self.login = login
-    }
 }

@@ -13,10 +13,10 @@ class InformationViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableview: UITableView!
     
 
-    var information = [Item]()
+    var information = [Items]()
     var languages = ""
     var page = 1
-    var infos = [Itens]()
+    var infos = [LanguageItem]()
     override func viewDidLoad() {
         title = "Linguagem: \(languages)"
         tableview.tableFooterView = UIView()

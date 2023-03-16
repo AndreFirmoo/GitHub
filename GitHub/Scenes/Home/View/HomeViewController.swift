@@ -48,10 +48,9 @@ final class HomeViewController: UIViewController {
                 sharedView?.stopLoading()
                 let repo = RepositoryViewController(repository: repository)
                 navigationController?.pushViewController(repo, animated: true)
-            case .error(let error):
+            case .error:
                 sharedView?.stopLoading()
-                fatalError()
-                // TODO: - Fazer a logica de mostrar o error
+                sharedView?.displayError(title: "Oh! NÃO", message: "Infelizmente não encontramos a sua linguagem favorita, tente outra :)")
         }
     }
     

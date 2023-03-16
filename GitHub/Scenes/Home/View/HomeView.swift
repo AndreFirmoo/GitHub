@@ -53,8 +53,9 @@ extension Array where Element == String {
 final class HomeView: UIView {
     private var filterByItems = ["Favoritos", "Forks", "Procura de ajudas", "Atualizados"]
     private var orderByItems = ["Crescente", "Decrescente"]
-    private var selectedFilter = ""
-    private var selectedOrder = ""
+    private var selectedFilter: String?
+    private var selectedOrder: String?
+    
     private var loadingIndicator: UIActivityIndicatorView = {
         let load = UIActivityIndicatorView(style: .large)
         load.translatesAutoresizingMaskIntoConstraints = false
@@ -78,14 +79,15 @@ final class HomeView: UIView {
         return label
     }()
     
-    private lazy var searchTextField: UITextField = {
-        let textField = UITextField()
+    private lazy var searchTextField: GHTextField = {
+        let textField = GHTextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Exemplo: Swift"
-        
-        textField.layer.borderWidth = 2
-        textField.layer.borderColor = UIColor.black.cgColor
-        textField.layer.cornerRadius = 20
+
+        let attributedPlaceholder = NSAttributedString(string: "Exemplo: Swift", attributes: [
+            NSAttributedString.Key.foregroundColor: UIColor.gray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)
+        ])
+        textField.attributedPlaceholder = attributedPlaceholder
         return textField
     }()
     
@@ -166,8 +168,25 @@ final class HomeView: UIView {
     }
     
     private func getInformation() -> RepositoryParams? {
-        guard let language = searchTextField.text else {return nil}
-        return RepositoryParams(language: language, page: 1, order: selectedOrder, sort: selectedFilter)
+        guard let language = searchTextField.text,
+              let order = selectedOrder,
+              let filter = selectedFilter
+        else {
+            displayError(title: "Oh! NÃO", message: "Por favor preencha o campo da sua linguagem e selecione os filtros corretamente.")
+            return nil
+        }
+        if !language.isEmpty {
+            return RepositoryParams(language: language, page: 1, order: order, sort: filter)
+        }
+        
+        displayError(title: "Eita!", message: "O Campo de linguagem não pode ficar vazio, por gentileza preencha")
+        return nil
+    }
+    
+    func displayError(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        viewController.present(alert, animated: true)
     }
 }
 
@@ -183,8 +202,6 @@ extension HomeView: GHDropDownActionDelegate {
             }
         }
     }
-    
-    func ghDropDown(_ dropDown: GHDropDown, didChange index: Int) { }
 }
 
 extension HomeView: ViewCoded {

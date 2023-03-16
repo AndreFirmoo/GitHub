@@ -71,23 +71,4 @@ extension RepositoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         CGFloat(200)
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let offsetY = scrollView.contentOffset.y
-        let contentHeight = scrollView.contentSize.height
-        let tableHeight = scrollView.frame.size.height
-
-        if offsetY > contentHeight - tableHeight {
-            if currentPage <= maxPage {
-                self.currentPage += 1
-                viewModel.fetchSelected(language: repository.items.first!.language ?? "C", page: currentPage) { repositoryRefrash in
-                    DispatchQueue.main.async {
-                        
-                        self.repository.items.append(contentsOf: repositoryRefrash.items)
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
-    }
 }

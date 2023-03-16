@@ -24,6 +24,7 @@
 		284B584829C247F600D30041 /* GHDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B584729C247F600D30041 /* GHDropDown.swift */; };
 		284B584A29C25D1D00D30041 /* GHDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B584929C25D1D00D30041 /* GHDropDownView.swift */; };
 		284B584C29C27D0000D30041 /* GHDropDownConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B584B29C27D0000D30041 /* GHDropDownConfiguration.swift */; };
+		284B584E29C29EC400D30041 /* GHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284B584D29C29EC400D30041 /* GHTextField.swift */; };
 		88261A0E23156D06005BA0A1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88261A0D23156D06005BA0A1 /* AppDelegate.swift */; };
 		88261A1823156D0E005BA0A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88261A1723156D0E005BA0A1 /* Assets.xcassets */; };
 		88261A1B23156D0E005BA0A1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88261A1923156D0E005BA0A1 /* LaunchScreen.storyboard */; };
@@ -70,6 +71,7 @@
 		284B584729C247F600D30041 /* GHDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHDropDown.swift; sourceTree = "<group>"; };
 		284B584929C25D1D00D30041 /* GHDropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHDropDownView.swift; sourceTree = "<group>"; };
 		284B584B29C27D0000D30041 /* GHDropDownConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHDropDownConfiguration.swift; sourceTree = "<group>"; };
+		284B584D29C29EC400D30041 /* GHTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GHTextField.swift; sourceTree = "<group>"; };
 		88261A0A23156D06005BA0A1 /* GitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88261A0D23156D06005BA0A1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88261A1723156D0E005BA0A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				284B584429C2322500D30041 /* GHBottomSheet */,
 				284B584329C230A400D30041 /* GHDropDown */,
+				284B584D29C29EC400D30041 /* GHTextField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				284B584A29C25D1D00D30041 /* GHDropDownView.swift in Sources */,
 				284B582229C0220E00D30041 /* HomeViewController.swift in Sources */,
 				284B584629C232A800D30041 /* GHBottomSheetViewController.swift in Sources */,
+				284B584E29C29EC400D30041 /* GHTextField.swift in Sources */,
 				284B583229C0CAA800D30041 /* HomeViewModelConcreate.swift in Sources */,
 				284B581F29C00FCB00D30041 /* ServiceConcreate.swift in Sources */,
 				284B583529C0D98600D30041 /* RepositoryViewController.swift in Sources */,

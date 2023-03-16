@@ -13,6 +13,12 @@ protocol GHDropDownActionDelegate {
     func ghDropDown(_ dropDown: GHDropDown, didChange index: Int)
 }
 
+extension GHDropDownActionDelegate {
+    func ghDropDown(_ dropDown: GHDropDown, didChange index: Int) {
+        
+    }
+}
+
 
 final class GHDropDown: UIButton {
     private var ghDropDownConfigurator: GHDropDownConfiguration

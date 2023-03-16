@@ -28,26 +28,26 @@ final class HomeViewController: UIViewController {
         viewModel.statesDidChange = { [weak self] state in
             self?.updateUI(for: state)
         }
-        sharedView?.completionAction = {[weak self] language in
-            self?.viewModel.fetchSelected(language: language, page: 1)
+        sharedView?.completionAction = {[weak self] params in
+            self?.viewModel.fetchSelected(params: params)
         }
+
     }
     
     override func loadView() {
         super.loadView()
-        sharedView = HomeView(languages: ["C","Java","Swift","Kotlin","Javascript","Typescript"])
+        sharedView = HomeView(viewController: self)
         view = sharedView
     }
-    
+
     func updateUI(for state: HomeViewStates) {
         switch state {
             case .loading:
                 sharedView?.showLoading()
             case .loaded(let repository):
                 sharedView?.stopLoading()
-                let repoViewController = RepositoryViewController(repository: repository)
-                repoViewController.modalPresentationStyle = .fullScreen
-                navigationController?.pushViewController(repoViewController, animated: true)
+                let repo = RepositoryViewController(repository: repository)
+                navigationController?.pushViewController(repo, animated: true)
             case .error(let error):
                 sharedView?.stopLoading()
                 fatalError()

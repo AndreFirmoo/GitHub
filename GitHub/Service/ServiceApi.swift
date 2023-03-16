@@ -10,15 +10,14 @@ import UIKit
 
 protocol Service {
     func fetchData(
-        from language: String,
-        currentPage: Int,
-        completion: @escaping (Result<Repository, Error>)-> Void
+        params: RepositoryParams,
+        completion: @escaping (Result<Repository, RepositoryError>)-> Void
     )
     
     func fetchData(
         userName: String,
         loginName: String,
-        pullRequests completion: @escaping (Result<[PullRequest], Error>)-> Void
+        pullRequests completion: @escaping (Result<[PullRequest], RepositoryError>)-> Void
     )
     
     func downloadImage(url: String, completion: @escaping (UIImage?) -> Void)

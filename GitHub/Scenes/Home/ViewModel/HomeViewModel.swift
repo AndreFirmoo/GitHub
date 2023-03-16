@@ -10,12 +10,12 @@ import UIKit
 protocol HomeViewModel {
     var viewStates: HomeViewStates { get }
     var statesDidChange: ((HomeViewStates) -> Void)? { get set}
-    func fetchSelected(language: String, page: Int)
+    func fetchSelected(params: RepositoryParams)
     func downloadImage(url: String, completion: @escaping(UIImage?)-> Void)
 }
 
 enum HomeViewStates {
     case loading
     case loaded(Repository)
-    case error(Error)
+    case error(RepositoryError)
 }

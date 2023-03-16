@@ -16,14 +16,14 @@ final class RepositoryViewModelConcrete: RepositoryViewModel {
     }
     
     func fetchSelected(language: String, page: Int, completion: @escaping(Repository)-> Void) {
-        service.fetchData(from: language, currentPage: page) { result in
-            switch result {
-                case .success(let success):
-                    completion(success)
-                case .failure(let failure):
-                    print(failure)
-            }
-        }
+//        service.fetchData(from: language, currentPage: page) { result in
+//            switch result {
+//                case .success(let success):
+//                    completion(success)
+//                case .failure(let failure):
+//                    print(failure)
+//            }
+//        }
     }
     
     func downloadImage(url: String, completion: @escaping (UIImage?) -> Void) {

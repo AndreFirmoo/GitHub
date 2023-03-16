@@ -23,43 +23,16 @@ final class ServiceConcrete {
         return jsonDecoder
     }()
     
-    enum RepositoriesEndpoint {
-        private var baseURL: String {return "https://api.github.com/"}
-        case language(String, Int)
-        case pullRequests(String, String)
-        
-        private var fullPath: String {
-            var endpoint: String
-            switch self {
-                case .language(let language, let page):
-                    endpoint = "search/repositories?q=language:\(language)&sort=stars&page=\(page)"
-                case .pullRequests(let loginName, let userName):
-                    endpoint = "repos/\(loginName)/\(userName)/pulls"
-                default:
-                    break
-            }
-            
-            return baseURL + endpoint
-        }
-        
-        var url: URL {
-            guard let url = URL(string: fullPath) else {
-                preconditionFailure("URL NOT VALID")
-            }
-            return url
-        }
-    }
-    
-    private func requestGH<T: Decodable>(url: URL, completion: @escaping (Result<T, Error>) -> Void) {
+    private func requestGH<T: Decodable>(url: URL, completion: @escaping (Result<T, RepositoryError>) -> Void) {
         let urlRequest = URLRequest(url: url)
         urlSession.dataTask(with: urlRequest) { [weak self] data, response, error in
             guard let strongSelf = self else { return }
             if error != nil {
-                completion(.failure(error!))
+                completion(.failure(.errorRequest))
                 return
             }
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
-                print("Fudeu")
+                completion(.failure(.errorStatusCode))
                 return
             }
             if let data = data {
@@ -67,6 +40,7 @@ final class ServiceConcrete {
                     let values = try strongSelf.jsonDecoder.decode(T.self,  from: data)
                     completion(.success(values))
                 } catch {
+                    completion(.failure(.errorDecode))
                     return
                 }
             }
@@ -101,13 +75,13 @@ extension ServiceConcrete: Service {
         }.resume()
     }
     
-    func fetchData(userName: String, loginName: String, pullRequests completion: @escaping (Result<[PullRequest], Error>) -> Void) {
+    func fetchData(userName: String, loginName: String, pullRequests completion: @escaping (Result<[PullRequest], RepositoryError>) -> Void) {
         let url = RepositoriesEndpoint.pullRequests(loginName, userName).url
         requestGH(url: url, completion: completion)
     }
     
-    func fetchData(from language: String, currentPage: Int, completion: @escaping (Result<Repository, Error>) -> Void) {
-        let url = RepositoriesEndpoint.language(language, currentPage).url
+    func fetchData(params: RepositoryParams, completion: @escaping (Result<Repository, RepositoryError>) -> Void) {
+        let url = RepositoriesEndpoint.language(params).url
         requestGH(url: url, completion: completion)
     }
 }

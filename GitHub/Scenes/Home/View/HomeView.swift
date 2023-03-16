@@ -8,8 +8,53 @@
 
 import UIKit
 
-final class HomeView: UIView {
+enum FilterItems: String {
+    case stars = "stars"
+    case forks = "forks"
+    case helpIssues = "help-wanted-issues"
+    case updated = "updated"
+}
+
+enum OrderByItems: String {
+    case asc = "asc"
+    case desc = "desc"
+}
+
+extension Array where Element == String {
+    func filterItemForName(_ name: String) -> FilterItems? {
+        switch name {
+            case "Favoritos":
+                return .stars
+            case "Forks":
+                return .forks
+            case "Procura de ajudas":
+                return .helpIssues
+            case "Atualizados":
+                return .updated
+            default:
+                return nil
+        }
+    }
     
+    func orderByItemFor(_ name: String) -> OrderByItems? {
+        switch name {
+            case "Crescente":
+                return .asc
+            case "Decrescente":
+                return .desc
+            default:
+                return nil
+        }
+    }
+}
+
+
+
+final class HomeView: UIView {
+    private var filterByItems = ["Favoritos", "Forks", "Procura de ajudas", "Atualizados"]
+    private var orderByItems = ["Crescente", "Decrescente"]
+    private var selectedFilter = ""
+    private var selectedOrder = ""
     private var loadingIndicator: UIActivityIndicatorView = {
         let load = UIActivityIndicatorView(style: .large)
         load.translatesAutoresizingMaskIntoConstraints = false
@@ -28,34 +73,74 @@ final class HomeView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = .black
-        label.text = "Escolha uma linguagem dentro da lista"
+        label.text = "Pesquise pela sua linguagem favorita"
         label.numberOfLines = 0
         return label
     }()
     
-    private lazy var languagePicker: UIPickerView = {
-        let pikerView = UIPickerView()
-        pikerView.translatesAutoresizingMaskIntoConstraints = false
-        pikerView.delegate = self
-        pikerView.dataSource = self
-        return pikerView
+    private lazy var searchTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Exemplo: Swift"
+        
+        textField.layer.borderWidth = 2
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.layer.cornerRadius = 20
+        return textField
     }()
     
     private lazy var goSearchButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Ir", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitle("Pesquisar", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector (searchLanguage), for: .touchUpInside)
+        button.backgroundColor = .label
+        button.layer.cornerRadius = 10
         return button
     }()
     
-    private var selectedLanguages = ""
-    private var languages: [String]
-    var completionAction: ((String)->Void )?
+    private lazy var orderBy: GHDropDown = {
+        let configuration = GHDropDownConfiguration(
+            delegate: self,
+            title: "Ordenar por:",
+            placeholder: "Selecione a ordem",
+            colorPlaceholder: .black,
+            borderWidth: 1,
+            borderColor: UIColor.black.cgColor,
+            items: orderByItems,
+            selectedIndex: -1,
+            imageToTrailing: true,
+            viewController: viewController,
+            bottomSheetViewController: GHBottomSheetViewController()
+        )
+        let drop = GHDropDown(ghDropDownConfigurator: configuration)
+        return drop
+    }()
     
-    init(languages:[String]) {
-        self.languages = languages
+    private lazy var filterBy: GHDropDown = {
+        let configuration = GHDropDownConfiguration(
+            delegate: self,
+            title: "Filtrar por:",
+            placeholder: "Selecione um filtro",
+            colorPlaceholder: .black,
+            borderWidth: 1,
+            borderColor: UIColor.black.cgColor,
+            items: filterByItems,
+            selectedIndex: -1,
+            imageToTrailing: true,
+            viewController: viewController,
+            bottomSheetViewController: GHBottomSheetViewController()
+        )
+        let drop = GHDropDown(ghDropDownConfigurator: configuration)
+        return drop
+    }()
+    
+    var completionAction: ((RepositoryParams)->Void)?
+    var viewController: UIViewController
+    
+    init(viewController: UIViewController) {
+        self.viewController = viewController
         super.init(frame: .zero)
         self.backgroundColor = .cyan
         setup()
@@ -67,7 +152,8 @@ final class HomeView: UIView {
     }
     
     @objc func searchLanguage() {
-        completionAction?(selectedLanguages)
+        guard let params = getInformation() else { return }
+        completionAction?(params)
     }
     
     
@@ -78,44 +164,48 @@ final class HomeView: UIView {
     func stopLoading() {
         self.loadingIndicator.stopAnimating()
     }
-}
-
-extension HomeView: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
-    }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        languages.count
+    private func getInformation() -> RepositoryParams? {
+        guard let language = searchTextField.text else {return nil}
+        return RepositoryParams(language: language, page: 1, order: selectedOrder, sort: selectedFilter)
     }
 }
 
-extension HomeView: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        selectedLanguages = languages[row]
-        return selectedLanguages
+extension HomeView: GHDropDownActionDelegate {
+    func ghDropDown(_ dropDown: GHDropDown, selectItem at: Int, nameItem: String) {
+        if dropDown == orderBy {
+            if let item = orderByItems.orderByItemFor(nameItem) {
+                selectedOrder = item.rawValue
+            }
+        } else {
+            if let item = filterByItems.filterItemForName(nameItem) {
+                selectedFilter = item.rawValue
+            }
+        }
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedLanguages = languages[row]
-    }
+    func ghDropDown(_ dropDown: GHDropDown, didChange index: Int) { }
 }
 
 extension HomeView: ViewCoded {
     func setupView() {
         addSubview(logoImageView)
         addSubview(titleLabel)
-        addSubview(languagePicker)
+        addSubview(searchTextField)
+        addSubview(orderBy)
+        addSubview(filterBy)
         addSubview(goSearchButton)
         addSubview(loadingIndicator)
     }
     
     func addConstraints() {
         setupConstraintsLogoImageView()
-        setupConstraintsLanguagePicker()
         setupConstraintsGoSearchButton()
         setupConstraintsTitleLabel()
         setupConstraintsLoadingIndicatorView()
+        setupConstraintsFilterByDropDown()
+        setupConstraintsOrderByDropDown()
+        setupConstraintsSearchTextField()
     }
     
     func setupConstraintsLoadingIndicatorView() {
@@ -142,19 +232,41 @@ extension HomeView: ViewCoded {
         ])
     }
     
-    func setupConstraintsLanguagePicker() {
+    func setupConstraintsSearchTextField() {
         NSLayoutConstraint.activate([
-            self.languagePicker.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
-            self.languagePicker.leadingAnchor.constraint(equalTo: leadingAnchor),
-            self.languagePicker.trailingAnchor.constraint(equalTo: trailingAnchor)
+            self.searchTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+            self.searchTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            self.searchTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            self.searchTextField.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    private func setupConstraintsOrderByDropDown() {
+        NSLayoutConstraint.activate([
+            self.orderBy.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 30),
+            self.orderBy.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            self.orderBy.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            self.orderBy.heightAnchor.constraint(equalToConstant: 50),
+            
+        ])
+    }
+    
+    private func setupConstraintsFilterByDropDown() {
+        NSLayoutConstraint.activate([
+            self.filterBy.topAnchor.constraint(equalTo: orderBy.bottomAnchor, constant: 15),
+            self.filterBy.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -32),
+            self.filterBy.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
+            self.filterBy.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
     func setupConstraintsGoSearchButton() {
         NSLayoutConstraint.activate([
             self.goSearchButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -5),
+            self.goSearchButton.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -10),
             self.goSearchButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 32),
-            self.goSearchButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -32)
+            self.goSearchButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -32),
+            self.goSearchButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 }

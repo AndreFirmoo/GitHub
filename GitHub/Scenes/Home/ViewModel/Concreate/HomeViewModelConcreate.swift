@@ -25,9 +25,9 @@ final class HomeViewModelConcrete: HomeViewModel {
         self.service = service
     }
     
-    func fetchSelected(language: String, page: Int) {
+    func fetchSelected(params: RepositoryParams) {
         viewStates = .loading
-        service.fetchData(from: language, currentPage: page) { result in
+        service.fetchData(params: params) { result in
             switch result {
                 case .success(let success):
                     self.viewStates = .loaded(success)

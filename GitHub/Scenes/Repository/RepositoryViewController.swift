@@ -36,7 +36,10 @@ final class RepositoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Language: \(repository.items.first!.language)"
+        if let languageName = repository.items.first?.language {
+            title = "Language: \(languageName)"
+        }
+
         self.view.backgroundColor = .white
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -77,7 +80,7 @@ extension RepositoryViewController: UITableViewDelegate {
         if offsetY > contentHeight - tableHeight {
             if currentPage <= maxPage {
                 self.currentPage += 1
-                viewModel.fetchSelected(language: repository.items.first!.language, page: currentPage) { repositoryRefrash in
+                viewModel.fetchSelected(language: repository.items.first!.language ?? "C", page: currentPage) { repositoryRefrash in
                     DispatchQueue.main.async {
                         
                         self.repository.items.append(contentsOf: repositoryRefrash.items)

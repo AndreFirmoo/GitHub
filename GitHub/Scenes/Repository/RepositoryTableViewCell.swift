@@ -101,13 +101,13 @@ final class RepositoryTableViewCell: UITableViewCell {
     }
     
     func setupCell(repositoryItem: Items) {
-        self.userNameLabel.text = repositoryItem.owner.login
+        self.userNameLabel.text = repositoryItem.owner?.login
         self.descriptionUserLabel.text = repositoryItem.description
         self.repositoryNameLabel.text = repositoryItem.name
         self.languageLabel.text = repositoryItem.language
-        self.starCountLabel.text = String(repositoryItem.stargazersCount)
-        self.forkCountLabel.text = String(repositoryItem.forks)
-        self.viewModel.downloadImage(url: repositoryItem.owner.avatarUrl) { image in
+        self.starCountLabel.text = String(repositoryItem.stargazersCount ?? 0)
+        self.forkCountLabel.text = String(repositoryItem.forks ?? 0)
+        self.viewModel.downloadImage(url: repositoryItem.owner?.avatarUrl ?? "") { image in
             self.avatarImageView.image = image ?? UIImage(systemName: "person")
         }
     }

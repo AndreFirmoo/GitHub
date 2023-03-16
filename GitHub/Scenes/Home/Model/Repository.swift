@@ -13,20 +13,19 @@ struct Repository: Decodable {
 }
     
 struct Items: Decodable {
-    var name : String
-    var owner: Owner
-    var description:String
-    var stargazersCount:Int
-    var forks: Int
-    var language: String
+    var name : String?
+    var owner: Owner?
+    var description:String?
+    var stargazersCount:Int?
+    var forks: Int?
+    var language: String?
 }
 
 struct Language: Decodable {
-    let language : String
-    
+    let language : String?
 }
 
 struct Owner: Decodable {
-    let login: String
-    let avatarUrl: String
+    let login: String?
+    let avatarUrl: String?
 }

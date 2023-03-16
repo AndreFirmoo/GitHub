@@ -10,8 +10,10 @@ import UIKit
  
 final class RepositoryViewController: UIViewController {
     private var repository: Repository
+    private var params: RepositoryParams
     private let maxPage = 10
     private var currentPage = 1
+
     private lazy var tableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -22,8 +24,9 @@ final class RepositoryViewController: UIViewController {
     }()
     
     private var viewModel: RepositoryViewModel
-    init(repository: Repository, viewModel: RepositoryViewModel = RepositoryViewModelConcrete()) {
+    init(repository: Repository, params: RepositoryParams, viewModel: RepositoryViewModel = RepositoryViewModelConcrete()) {
         self.repository = repository
+        self.params = params
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
@@ -70,5 +73,24 @@ extension RepositoryViewController: UITableViewDataSource {
 extension RepositoryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         CGFloat(200)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let maxIndexPage = 33
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        
+        if offsetY > contentHeight - scrollView.frame.height {
+            if !viewModel.isLoadItems && params.page < maxIndexPage {
+                params.page += 1
+                viewModel.isLoadItems = true
+                viewModel.fetchSelected(params: self.params) { repository in
+                    self.repository.items.append(contentsOf: repository.items)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
 }

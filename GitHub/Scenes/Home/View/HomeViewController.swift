@@ -12,7 +12,7 @@ final class HomeViewController: UIViewController {
     
     var sharedView: HomeView?
     private var viewModel: HomeViewModel
-    
+    private var params: RepositoryParams?
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -29,6 +29,7 @@ final class HomeViewController: UIViewController {
             self?.updateUI(for: state)
         }
         sharedView?.completionAction = {[weak self] params in
+            self?.params = params
             self?.viewModel.fetchSelected(params: params)
         }
 
@@ -46,7 +47,7 @@ final class HomeViewController: UIViewController {
                 sharedView?.showLoading()
             case .loaded(let repository):
                 sharedView?.stopLoading()
-                let repo = RepositoryViewController(repository: repository)
+                let repo = RepositoryViewController(repository: repository, params: self.params!)
                 navigationController?.pushViewController(repo, animated: true)
             case .error:
                 sharedView?.stopLoading()

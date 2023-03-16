@@ -9,6 +9,7 @@
 import UIKit
 
 protocol RepositoryViewModel {
-    func fetchSelected(language: String, page: Int, completion: @escaping(Repository)-> Void)
+    var isLoadItems: Bool {get set}
+    func fetchSelected(params: RepositoryParams, completion: @escaping(Repository)-> Void)
     func downloadImage(url: String, completion: @escaping(UIImage?)-> Void)
 }

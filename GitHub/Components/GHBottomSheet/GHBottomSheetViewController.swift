@@ -9,6 +9,7 @@
 import UIKit
 
 final class GHBottomSheetViewController: UIViewController {
+    // MARK: - Properties
     private lazy var mainView: UIView = {
         let view = UIView(frame: .zero)
         view.backgroundColor = .white
@@ -19,30 +20,29 @@ final class GHBottomSheetViewController: UIViewController {
     private var contentView = UIView()
     private var heightConstraint: NSLayoutConstraint!
     var completion: (() -> Void)?
-    public var viewAlphaComponent: CGFloat = 0.7
+    var viewAlphaComponent: CGFloat = 0.7
     private var swipeDownGesture: UIPanGestureRecognizer?
     private var mainViewTranslation = CGPoint.zero
-    public var hasRoundedCorners: Bool = true
-    public var dismissType: DismissType = .gestureDismissible
+    var dismissType: DismissType = .gestureDismissible
     
     enum DismissType {
         case gestureDismissible
         case notDismissible
     }
     
+    // MARK: - Initializers
     init() {
         super.init(nibName: nil, bundle: nil)
         layoutView()
+        mainView.layer.cornerRadius = 20
+        modalPresentationStyle = .overFullScreen
+        modalTransitionStyle = .crossDissolve
+        backgroundShadow(with: UIColor.black.withAlphaComponent(self.viewAlphaComponent))
     }
     
     public convenience init(completion: @escaping (() -> Void)) {
         self.init()
         self.completion = completion
-        
-        mainView.layer.cornerRadius = 20
-        modalPresentationStyle = .overFullScreen
-        modalTransitionStyle = .crossDissolve
-        makeBackgroundShadow(with: UIColor.black.withAlphaComponent(self.viewAlphaComponent))
     }
     
     @available(*, unavailable)
@@ -50,17 +50,22 @@ final class GHBottomSheetViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View's Life Cycle
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        makeBackgroundShadow(with: UIColor.black.withAlphaComponent(self.viewAlphaComponent))
+        backgroundShadow(with: UIColor.black.withAlphaComponent(self.viewAlphaComponent))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        makeBackgroundShadow(with: .clear)
+        backgroundShadow(with: .clear)
     }
     
-    private func makeBackgroundShadow(with color: UIColor) {
+    
+    /// Set animated background in view
+    /// - Parameters:
+    ///     - Color: change current color background view
+    private func backgroundShadow(with color: UIColor) {
         UIView.animate(
             withDuration: 0.15,
             animations: {
@@ -69,7 +74,11 @@ final class GHBottomSheetViewController: UIViewController {
         )
     }
     
-    
+    /// Show bottom sheet viewController
+    /// - Parameters:
+    ///     - CurrentViewController: viewController to present a bottom sheet
+    ///     - ContentView: The ConteView to show when appears bottom sheet
+    ///     - DismissType: It's enum to choose dismiss type bottom sheet
     func showBottomSheet(
         with currentViewController: UIViewController,
         contentView: UIView,
@@ -81,6 +90,9 @@ final class GHBottomSheetViewController: UIViewController {
         }
     }
     
+    /// Configure contentView when appears bottom sheet
+    /// - Parameters:
+    ///     - ContentView: A Custom View to appears when show up bottom sheet
     private func setupContentView(_ contentView: UIView) {
         self.contentView = contentView
         contentView.translatesAutoresizingMaskIntoConstraints = false
@@ -110,6 +122,7 @@ final class GHBottomSheetViewController: UIViewController {
         configureDismiss()
     }
     
+    /// Setup main view of bottom sheet
     private func layoutView() {
         self.view.addSubview(mainView)
         
@@ -133,10 +146,12 @@ final class GHBottomSheetViewController: UIViewController {
         mainView.transform = .identity
     }
     
+    /// Custom completion when dismiss bottom sheet
     @objc func dismissCompletion() {
         dismiss(animated: true, completion: completion)
     }
     
+    /// Configuration dismiss type
     func configureDismiss() {
         if dismissType == .gestureDismissible {
             swipeDownGesture = UIPanGestureRecognizer(target: self,
@@ -145,6 +160,9 @@ final class GHBottomSheetViewController: UIViewController {
         }
     }
     
+    /// Configure swipe down with UIPanGestureRecognizer
+    /// - Parameters:
+    ///     - Gesture: A gesture recognizer to setup action
     @objc private func swipeDownAction(_ gesture: UIPanGestureRecognizer) {
         switch gesture.state {
             case .changed:

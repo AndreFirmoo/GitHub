@@ -11,7 +11,6 @@ import UIKit
 
 final class ServiceConcrete {
     private let urlSession = URLSession.shared
-    private let baseUrl = URL(string: "https://api.github.com/")
     private let cache = NSCache<NSString, UIImage>()
     
     private var jsonDecoder: JSONDecoder = {
@@ -73,11 +72,6 @@ extension ServiceConcrete: Service {
                 completion(image)
             }
         }.resume()
-    }
-    
-    func fetchData(userName: String, loginName: String, pullRequests completion: @escaping (Result<[PullRequest], RepositoryError>) -> Void) {
-        let url = RepositoriesEndpoint.pullRequests(loginName, userName).url
-        requestGH(url: url, completion: completion)
     }
     
     func fetchData(params: RepositoryParams, completion: @escaping (Result<Repository, RepositoryError>) -> Void) {

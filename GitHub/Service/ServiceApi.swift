@@ -14,11 +14,5 @@ protocol Service {
         completion: @escaping (Result<Repository, RepositoryError>)-> Void
     )
     
-    func fetchData(
-        userName: String,
-        loginName: String,
-        pullRequests completion: @escaping (Result<[PullRequest], RepositoryError>)-> Void
-    )
-    
     func downloadImage(url: String, completion: @escaping (UIImage?) -> Void)
 }

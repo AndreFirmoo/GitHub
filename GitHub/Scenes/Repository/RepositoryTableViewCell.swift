@@ -55,8 +55,7 @@ final class RepositoryTableViewCell: UITableViewCell {
     }()
     
     private lazy var starImageView: UIImageView = {
-        let image = UIImage(systemName: "star")
-        image?.withTintColor(.black, renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "star.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal)
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

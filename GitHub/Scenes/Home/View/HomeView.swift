@@ -8,48 +8,6 @@
 
 import UIKit
 
-enum FilterItems: String {
-    case stars = "stars"
-    case forks = "forks"
-    case helpIssues = "help-wanted-issues"
-    case updated = "updated"
-}
-
-enum OrderByItems: String {
-    case asc = "asc"
-    case desc = "desc"
-}
-
-extension Array where Element == String {
-    func filterItemForName(_ name: String) -> FilterItems? {
-        switch name {
-            case "Favoritos":
-                return .stars
-            case "Forks":
-                return .forks
-            case "Procura de ajudas":
-                return .helpIssues
-            case "Atualizados":
-                return .updated
-            default:
-                return nil
-        }
-    }
-    
-    func orderByItemFor(_ name: String) -> OrderByItems? {
-        switch name {
-            case "Crescente":
-                return .asc
-            case "Decrescente":
-                return .desc
-            default:
-                return nil
-        }
-    }
-}
-
-
-
 final class HomeView: UIView {
     private var filterByItems = ["Favoritos", "Forks", "Procura de ajudas", "Atualizados"]
     private var orderByItems = ["Crescente", "Decrescente"]
@@ -59,6 +17,7 @@ final class HomeView: UIView {
     private var loadingIndicator: UIActivityIndicatorView = {
         let load = UIActivityIndicatorView(style: .large)
         load.translatesAutoresizingMaskIntoConstraints = false
+        load.tintColor = .black
         return load
     }()
     
@@ -278,12 +237,14 @@ extension HomeView: ViewCoded {
     }
     
     func setupConstraintsGoSearchButton() {
+        let lowPriorityBottomAnchor = self.goSearchButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15)
+        lowPriorityBottomAnchor.priority = .defaultLow
         NSLayoutConstraint.activate([
-            self.goSearchButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -5),
             self.goSearchButton.bottomAnchor.constraint(equalTo: self.keyboardLayoutGuide.topAnchor, constant: -10),
             self.goSearchButton.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 32),
             self.goSearchButton.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -32),
-            self.goSearchButton.heightAnchor.constraint(equalToConstant: 50)
+            self.goSearchButton.heightAnchor.constraint(equalToConstant: 50),
+            lowPriorityBottomAnchor
         ])
     }
 }

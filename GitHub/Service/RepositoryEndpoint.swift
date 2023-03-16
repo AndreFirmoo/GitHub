@@ -18,15 +18,12 @@ struct RepositoryParams {
 enum RepositoriesEndpoint {
     private var baseURL: String { return "https://api.github.com/" }
     case language(RepositoryParams)
-    case pullRequests(String, String)
     
     private var fullPath: String {
         var endpoint: String
         switch self {
             case .language(let params):
                 endpoint = "search/repositories?q=language:\(params.language)&sort=\(params.sort)&order=\(params.order)&page=\(params.page)"
-            case .pullRequests(let loginName, let userName):
-                endpoint = "repos/\(loginName)/\(userName)/pulls"
         }
         
         return baseURL + endpoint

@@ -51,7 +51,10 @@ final class HomeViewController: UIViewController {
                 navigationController?.pushViewController(repo, animated: true)
             case .error:
                 sharedView?.stopLoading()
-                sharedView?.displayError(title: "Oh! NÃO", message: "Infelizmente não encontramos a sua linguagem favorita, tente outra :)")
+                sharedView?.displayError(
+                    title: "Oh! NÃO",
+                    message: "Infelizmente não encontramos a sua linguagem favorita, tente outra :)"
+                )
         }
     }
     
